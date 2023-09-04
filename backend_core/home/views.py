@@ -7,3 +7,6 @@ class HomeView(TemplateView):
 
 class FormView(TemplateView):
     template_name = 'form.html'
+
+
+
