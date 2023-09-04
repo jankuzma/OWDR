@@ -1,44 +1,22 @@
-{% load static %}
-
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Django Template - {% block title %}Welcome{% endblock %}</title>
-
-    {% block styles %}
-        <link rel="stylesheet" href="{% static 'styles/bootstrap.min.css' %}">
-    {% endblock %}
-
-    {% block scripts %}
-        <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
-    {% endblock %}
-</head>
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <script src="/static/js/app.js" async defer></script>
+  </head>
 <body>
 
-{% include 'partials/navbar.html' %}
+{% block header %}
+{% endblock %}
 
-<div class="container mt-3">
-    <div class="row">
-        <div class="col-8">
-            {% block container %}{% endblock %}
-        </div>
-        <div class="col-4">
-            {% block aside %}{% endblock %}
-        </div>
-    </div>
-</div>
+{% block content %}
+{% endblock %}
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            {% block footer %}{% endblock %}
-        </div>
-    </div>
-</div>
-
+{% block footer %}
+{% endblock %}
 </body>
 </html>

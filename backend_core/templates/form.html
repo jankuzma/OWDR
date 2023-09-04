@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <header class="header--form-page">
+        {% include 'partials/navbar.html' %}
+        {% include 'partials/slogan-form.html' %}
+        {% if true %}
+        {% include 'partials/form-confirmation.html' %}
+        {% endif %}
+    </header>
+{% endblock %}
+
+{% block content %}
+    {% include 'partials/form.html' %}
+{% endblock %}
+
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock %}
+
+
