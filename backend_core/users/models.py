@@ -3,4 +3,6 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
-    pass
+    USERNAME_FIELD = 'email'
+    email = models.EmailField('email address', unique=True)
+    REQUIRED_FIELDS = []
