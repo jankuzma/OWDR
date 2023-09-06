@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import CustomUser
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -15,6 +17,19 @@ class Institution(models.Model):
         ("local-org", "zbiórka lokalna"),
     ]
 
-    type = models.CharField(choices=INSTITUITION_CHOICES, default="foundation")
+    type = models.CharField(max_length=64 ,choices=INSTITUITION_CHOICES, default="foundation")
 
-class
+
+class Donation(models.Model):
+    quantity = models.IntegerField()
+    categories = models.ManyToManyField(Category)
+    institution = models.ManyToManyField(Institution)
+    address = models.CharField(max_length=256)
+    phone_number = models.CharField(max_length=12)
+    city = models.CharField(max_length=255)
+    zip_code = models.CharField(max_length=12)
+    pick_up_date = models.DateField()
+    pick_up_time = models.TimeField()
+    pick_up_comment = models.TextField()
+    user = models.ForeignKey(CustomUser, default=None, null=True, on_delete=models.CASCADE)
+
