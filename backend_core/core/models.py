@@ -17,7 +17,10 @@ class Institution(models.Model):
         ("local-org", "zbiórka lokalna"),
     ]
 
-    type = models.CharField(max_length=64 ,choices=INSTITUITION_CHOICES, default="foundation")
+    type = models.CharField(max_length=64, choices=INSTITUITION_CHOICES, default="foundation")
+
+    def __str__(self):
+        return self.name
 
 
 class Donation(models.Model):
