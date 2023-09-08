@@ -1,9 +1,19 @@
+from django.shortcuts import render
+from django.views import View
 from django.views.generic import TemplateView
 
+from core.models import Donation, Institution
 
-class HomeView(TemplateView):
-    template_name = 'index.html'
 
+class HomeView(View):
+    def get(self, request):
+        donation_count = Donation.objects.count()
+        institution_count = Institution.objects.count()
+        ctx = {
+            "donations_count": donation_count,
+            "institutions_count": institution_count,
+        }
+        return render(request, 'index.html', ctx)
 
 class FormView(TemplateView):
     template_name = 'form.html'
