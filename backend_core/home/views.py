@@ -10,13 +10,20 @@ class HomeView(View):
         donation_count = Donation.objects.count()
         institution_count = Institution.objects.count()
         institutions = Institution.objects.all()
+        foundations = Institution.objects.filter(type="foundation")
+        ngos = Institution.objects.filter(type="ngo")
+        locals = Institution.objects.filter(type="local-org")
         ctx = {
             "donations_count": donation_count,
             "institutions_count": institution_count,
-            "institutions": institutions,
+            "foundations": foundations,
+            "ngos": ngos,
+            "locals": locals,
+
         }
         return render(request, 'index.html', ctx)
 
 
 class FormView(TemplateView):
     template_name = 'form.html'
+

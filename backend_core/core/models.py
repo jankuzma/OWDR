@@ -6,6 +6,8 @@ from users.models import CustomUser
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
 
 class Institution(models.Model):
     name = models.CharField(max_length=255)
@@ -35,3 +37,6 @@ class Donation(models.Model):
     pick_up_time = models.TimeField()
     pick_up_comment = models.TextField()
     user = models.ForeignKey(CustomUser, default=None, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.institution + " " + self.address

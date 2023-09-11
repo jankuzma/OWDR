@@ -13,11 +13,11 @@
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.</p>
 
         <ul class="help--slides-items">
-            {% for institution in institutions %}
+            {% for foundation in foundations %}
             	<li>
             <div class="col">
-              <div class="title">{{ institution }}</div>
-              <div class="subtitle">{{ institution.description }}</div>
+              <div class="title">{{ foundation }}</div>
+              <div class="subtitle">{{ foundation.description }}</div>
             </div>
 
             <div class="col"><div class="text">ubrania, jedzenie, sprzęt AGD, meble, zabawki</div></div>
@@ -42,11 +42,11 @@
           quos suscipit corporis!
         </p>
         <ul class="help--slides-items">
-          {% for institution in institutions %}
+          {% for ngo in ngos %}
             	<li>
             <div class="col">
-              <div class="title">{{ institution }}</div>
-              <div class="subtitle">{{ institution.description }}</div>
+              <div class="title">{{ ngo }}</div>
+              <div class="subtitle">{{ ngo.description }}</div>
             </div>
 
             <div class="col"><div class="text">ubrania, jedzenie, sprzęt AGD, meble, zabawki</div></div>
@@ -70,11 +70,11 @@
       <div class="help--slides" data-id="3">
         <p>Lorem ipsum dolor sit amet, his ocurreret persequeris ea, ad utinam laudem duo. Verterem adipisci partiendo eos ne, ea his reque quaeque recteque, ne quo lobortis intellegam.</p>
         <ul class="help--slides-items">
-            {% for institution in institutions %}
+            {% for local in locals %}
             	<li>
             <div class="col">
-              <div class="title">{{ institution }}</div>
-              <div class="subtitle">{{ institution.description }}</div>
+              <div class="title">{{ local }}</div>
+              <div class="subtitle">{{ local.description }}</div>
             </div>
 
             <div class="col"><div class="text">ubrania, jedzenie, sprzęt AGD, meble, zabawki</div></div>
