@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView
 
-from core.models import Donation, Institution
+from core.models import Donation, Institution, Category
 
 
 class HomeView(View):
@@ -24,6 +25,16 @@ class HomeView(View):
         return render(request, 'index.html', ctx)
 
 
-class FormView(TemplateView):
-    template_name = 'form.html'
-
+class FormView(View):
+    def get(self, request):
+        user = request.user
+        if user.is_authenticated:
+            categories = Category.objects.all()
+            institutions = Institution.objects.all()
+            ctx = {
+                "institutions": institutions,
+                "categories": categories,
+            }
+            return render(request, 'form.html', ctx)
+        else:
+            return redirect(reverse('users:login'))
