@@ -20,7 +20,7 @@ class Institution(models.Model):
     ]
 
     type = models.CharField(max_length=64, choices=INSTITUITION_CHOICES, default="foundation")
-
+    categories = models.ManyToManyField(Category, null=True)
     def __str__(self):
         return self.name
 

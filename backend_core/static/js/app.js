@@ -253,3 +253,37 @@ document.addEventListener("DOMContentLoaded", function() {
     new FormSteps(form);
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  const organizations = document.querySelectorAll(".form-group--checkbox input[type='radio']");
+  const categories = document.querySelectorAll(".form-group--checkbox input[type='checkbox']");
+  const categoriesList = []
+
+  categories.forEach(category => {
+    category.addEventListener("change", function() {
+      const selectedCategory = this.value.toLowerCase();
+
+      if (categoriesList.includes(selectedCategory)){
+        categoriesList.splice(categoriesList.indexOf(selectedCategory), 1)
+      }
+      else{
+        categoriesList.push(selectedCategory)
+      }
+
+
+      console.log(categoriesList)
+
+      organizations.forEach(organization => {
+        organization.closest(".form-group--checkbox").style.display = "none";
+      });
+
+
+      organizations.forEach(organization => {
+        if (categoriesList.includes(organization.name)) {
+          organization.closest(".form-group--checkbox").style.display = "block";
+        }
+      });
+    });
+  });
+});
