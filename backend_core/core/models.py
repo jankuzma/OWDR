@@ -6,6 +6,9 @@ from users.models import CustomUser
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class Institution(models.Model):
     name = models.CharField(max_length=255)
@@ -18,6 +21,7 @@ class Institution(models.Model):
     ]
 
     type = models.CharField(max_length=64, choices=INSTITUITION_CHOICES, default="foundation")
+    categories = models.ManyToManyField(Category, null=True)
 
     def __str__(self):
         return self.name
@@ -26,7 +30,7 @@ class Institution(models.Model):
 class Donation(models.Model):
     quantity = models.IntegerField()
     categories = models.ManyToManyField(Category)
-    institution = models.ManyToManyField(Institution)
+    institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     address = models.CharField(max_length=256)
     phone_number = models.CharField(max_length=12)
     city = models.CharField(max_length=255)
@@ -35,3 +39,6 @@ class Donation(models.Model):
     pick_up_time = models.TimeField()
     pick_up_comment = models.TextField()
     user = models.ForeignKey(CustomUser, default=None, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.institution + " " + self.address
