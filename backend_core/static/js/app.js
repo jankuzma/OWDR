@@ -273,14 +273,14 @@ const categories = document.querySelectorAll(".form-group--checkbox input[type='
         });
     });
 
-const bag_value_input = document.body.querySelector('body > section > div.form--steps-container > form > div:nth-child(2) > div.form-group.form-group--inline > label > input[type="number"]')
-const summary_bag_value =  document.querySelector('body > section > div.form--steps-container > form > div:nth-child(5) > div.summary > div:nth-child(1) > ul > li:nth-child(1) > span.summary--text')
+const bag_value_input = document.body.querySelector('body > section > div.form--steps-container > form > div > div.form-group.form-group--inline > label > input[type="number"]')
+const summary_bag_value =  document.querySelector('div.summary > div:nth-child(1) > ul > li:nth-child(1)')
 
 const nextbtn3 = document.querySelector('body > section > div.form--steps-container > form > div[data-step="3"] > div.form-group.form-group--buttons > button.btn.next-step')
 nextbtn3.addEventListener('click', () => {
-    const inputElements = document.querySelectorAll('div[style="display: block;"] > label > input');
-    const summary_inst_value =  document.querySelector('body > section > div.form--steps-container > form > div:nth-child(5) > div.summary > div:nth-child(1) > ul > li:nth-child(2) > span.summary--text')
-    summary_inst_value.innerText = `Wspierasz "${inputElements[0].getAttribute("name")}".`
+    const inputElements = document.querySelectorAll('div[style="display: block;"] > label > span > div:nth-child(1)');
+    const summary_inst_value =  document.querySelector('div.summary > div:nth-child(1) > ul > li:nth-child(2)')
+    summary_inst_value.innerText = `Wspierasz "${inputElements[0].innerText}".`
 })
 
 const nextbtn4 = document.querySelector('body > section > div.form--steps-container > form > div[data-step="4"] > div.form-group.form-group--buttons > button.btn.next-step')
