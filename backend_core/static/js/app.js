@@ -212,8 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             });
 
-            // Form submit
-            this.$form.querySelector("form").addEventListener("submit", e => this.submit(e));
+
         }
 
         /**
@@ -239,16 +238,6 @@ document.addEventListener("DOMContentLoaded", function () {
             // TODO: get data from inputs and show them in summary
         }
 
-        /**
-         * Submit form
-         *
-         * TODO: validation, send data to server
-         */
-        submit(e) {
-            e.preventDefault();
-            this.currentStep++;
-            this.updateForm();
-        }
     }
 
     const form = document.querySelector(".form--steps");
@@ -271,7 +260,7 @@ const categories = document.querySelectorAll(".form-group--checkbox input[type='
                     organization.closest(".form-group--checkbox").style.display = "block";
 
                 } else {
-                    const organizationCategories = organization.value.split(' ');
+                    const organizationCategories = organization.placeholder.split(' ');
                     const matches = selectedCategories.every(cat => organizationCategories.includes(cat));
 
                     if (matches) {
