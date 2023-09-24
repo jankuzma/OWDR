@@ -42,7 +42,7 @@ class CreateUserView(View):
         last_name = request.POST['last_name']
         email = request.POST['email']
         user = CustomUser.objects.create_user(
-            username=f'{first_name}-{email}',
+            username=email,
             first_name=first_name,
             last_name=last_name,
             email=email,
