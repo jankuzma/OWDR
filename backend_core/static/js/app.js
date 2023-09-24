@@ -287,15 +287,45 @@ const categories = document.querySelectorAll(".form-group--checkbox input[type='
 const bag_value_input = document.body.querySelector('body > section > div.form--steps-container > form > div:nth-child(2) > div.form-group.form-group--inline > label > input[type="number"]')
 const summary_bag_value =  document.querySelector('body > section > div.form--steps-container > form > div:nth-child(5) > div.summary > div:nth-child(1) > ul > li:nth-child(1) > span.summary--text')
 
-const nextbtn = document.querySelector('body > section > div.form--steps-container > form > div[data-step="3"] > div.form-group.form-group--buttons > button.btn.next-step')
-nextbtn.addEventListener('click', () => {
+const nextbtn3 = document.querySelector('body > section > div.form--steps-container > form > div[data-step="3"] > div.form-group.form-group--buttons > button.btn.next-step')
+nextbtn3.addEventListener('click', () => {
     const inputElements = document.querySelectorAll('div[style="display: block;"] > label > input');
     const summary_inst_value =  document.querySelector('body > section > div.form--steps-container > form > div:nth-child(5) > div.summary > div:nth-child(1) > ul > li:nth-child(2) > span.summary--text')
     summary_inst_value.innerText = `Wspierasz "${inputElements[0].getAttribute("name")}".`
 })
 
+const nextbtn4 = document.querySelector('body > section > div.form--steps-container > form > div[data-step="4"] > div.form-group.form-group--buttons > button.btn.next-step')
 
+nextbtn4.addEventListener('click', () => {
+    let inputs = [
+            document.querySelector('div > div[class="form-group form-group--inline"] > label > input[name="address"]'),
+            document.querySelector('div > div[class="form-group form-group--inline"] > label > input[name="city"]'),
+            document.querySelector('div > div[class="form-group form-group--inline"] > label > input[name="postcode"]'),
+            document.querySelector('div > div[class="form-group form-group--inline"] > label > input[name="phone"]'),
+            document.querySelector('div > div[class="form-group form-group--inline"] > label > input[name="data"]'),
+            document.querySelector('div > div[class="form-group form-group--inline"] > label > textarea')
+    ]
 
+    const summaryElements = [
+        document.querySelector('div[class="form-section form-section--columns"] > div:nth-child(1) > ul > li:nth-child(1)'),
+        document.querySelector('div[class="form-section form-section--columns"] > div:nth-child(1) > ul > li:nth-child(2)'),
+        document.querySelector('div[class="form-section form-section--columns"] > div:nth-child(1) > ul > li:nth-child(3)'),
+        document.querySelector('div[class="form-section form-section--columns"] > div:nth-child(1) > ul > li:nth-child(4)'),
+        document.querySelector('div[class="form-section form-section--columns"] > div:nth-child(2) > ul > li:nth-child(1)'),
+        document.querySelector('div[class="form-section form-section--columns"] > div:nth-child(2) > ul > li:nth-child(3)'),
+]
+    const timeElement = document.querySelector('body > section > div.form--steps-container > form > div.active > div.form-section.form-section--columns > div:nth-child(2) > div:nth-child(3) > label > input[type="time"]')
+    const summaryTimeElement = document.querySelector('div[class="form-section form-section--columns"] > div:nth-child(2) > ul > li:nth-child(2)')
+    if (inputs.length === summaryElements.length) {
+        for (let i = 0; i < inputs.length; i++) {
+            summaryElements[i].textContent = inputs[i].value;
+        }
+        summaryTimeElement.replaceWith(timeElement)
+
+    } else {
+        console.error("Number of inputs doesn't match the number of li elements.");
+    }
+})
 
 bag_value_input.addEventListener("change", function ()  {
     summary_bag_value.innerText = `${bag_value_input.value
