@@ -1,0 +1,82 @@
+{% load static %}
+<style>
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 8px 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+</style>
+
+<div class="profile" style="font-size: large;">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Bag quantity</th>
+                    <th>Institution Name</th>
+                    <th>Pick-up Date</th>
+                    <th>Pick-up Time</th>
+                    <th>City</th>
+                    <th>Street</th>
+                    <th>Zip Code</th>
+                    <th>Phone Number</th>
+                    <th>Pick-up Comment</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for donation in donations %}
+                    <tr>
+                        <td>{{ donation.quantity }}</td>
+                        <td>{{ donation.institution.name }}</td>
+                        <td>{{ donation.pick_up_date }}</td>
+                        <td>{{ donation.pick_up_time }}</td>
+                        <td>{{ donation.city }}</td>
+                        <td>{{ donation.address }}</td>
+                        <td>{{ donation.zip_code }}</td>
+                        <td>{{ donation.phone_number }}</td>
+                        <td>{{ donation.pick_up_comment }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

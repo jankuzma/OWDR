@@ -2,10 +2,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from django.views.generic import TemplateView, FormView
 
-from home.views import HomeView
-
+from core.models import Donation
 from users.models import CustomUser
 
 
@@ -56,3 +54,10 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return redirect('home:home')
+
+
+class UserView(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            donations = Donation.objects.filter(user=request.user)
+            return render(request, 'user.html', {'donations': donations})
